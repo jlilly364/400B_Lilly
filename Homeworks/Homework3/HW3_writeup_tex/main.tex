@@ -1,0 +1,57 @@
+\documentclass{aastex62}
+\usepackage{graphicx}
+\usepackage{float}
+
+\begin{document}
+\title{\Large{ASTR 400B - Homework 3}}
+\author{Jimmy Lilly}
+\address{Steward Observatory,  University  of  Arizona}
+\date{5 February 2020}
+
+\section{Mass Break Down of the Local Group}
+Using the ComponentMass function in the GalaxyMass script, I calculated masses for the halo, disk, and bulge of each galaxy in the Local Group: the Milky Way, M31 (Andromeda), and M33 (Triangulum). I also calculated their baryonic fractions ($f_{bar}$) with the following ratio:
+\begin{equation}
+    f_{bar} = \frac{M_{stellar}}{M_{total}} = \frac{M_{disk}+M_{bulge}}{M_{halo}+M_{disk}+M_{bulge}}
+\end{equation}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+        Galaxy Name & Halo Mass ($10^{12}$ \(\textup{M}_\odot\)) & Disk Mass ($10^{12}$ \(\textup{M}_\odot\)) & Bulge Mass ($10^{12}$ \(\textup{M}_\odot\)) & Total Mass ($10^{12}$ \(\textup{M}_\odot\)) & $f_{bar}$ \\
+    \hline
+    \hline
+    Milky Way & 1.975 & 0.075 & 0.010 & 2.060 & 0.041 \\
+    \hline
+    M31 & 1.921 & 0.120 & 0.019 & 2.060 & 0.067 \\
+    \hline
+    M33 & 0.187 & 0.009 & 0.000 & 0.196 & 0.046 \\
+    \hline
+    Local Group & 4.083 & 0.204 & 0.029 & 4.316 & 0.054 \\
+    \hline
+    \end{tabular}
+    \caption{This table outlines the halo, disk, bulge, and total masses of the Local Group galaxies. Also featured is the baryonic fraction for each Local Group component.}
+\end{table}
+
+\section{Questions}
+\begin{enumerate}
+  \item Q: How does the total mass of the MW and M31 compare in this simulation? What galaxy component dominates this total mass?
+  \newline
+  \newline
+  A: The total mass of MW and M31 are \underline{the same} in this simulation. The \underline{dark matter halo} dominates the total mass of each galaxy.
+  \item Q: How does the stellar mass of the MW and M31 compare? Which galaxy do you expect to be more luminous?
+  \newline
+  
+  A: The stellar mass of the MW ($0.085\times10^{12}$ \(\textup{M}_\odot\)) is $\sim$40\% \underline{less than} that of M31 ($0.139\times10^{12}$ \(\textup{M}_\odot\)). I expect M31 to be more luminous because it has a larger stellar mass (i.e. more stars).
+  \item Q: How does the total dark matter mass of the MW and M31 compare in this simulation (ratio)? Is this surprising, given their difference in stellar mass?
+  \newline
+  \newline
+  A: The total dark matter mass (halo mass) of the MW is $\sim$3\% \underline{greater than} that of M31. This is surprising given that the MW has significantly less stellar mass because you would expect dark matter mass and stellar mass to scale with one another. Although, I suppose since the origins of dark matter remain a mystery, the MW could have formed within a larger dark matter halo than M31 and, despite having less gas to form stars with, still has an appreciable amount of dark matter.
+  
+  \item Q: What is the ratio of stellar mass to total mass for each galaxy (i.e. the Baryon fraction)? The Baryonic fraction is $\sim$16\% in the Universe. How does this ratio compare to the baryon fraction you computed for each galaxy? Given that the total gas mass in the disks of these galaxies is negligible compared to the stellar mass, any ideas for why the universal baryon fraction might differ from that in these galaxies.
+  \newline
+  \newline
+  A: For the MW, $f_{bar}=4.10\%$. For M31, $f_{bar}=6.70\%$. For M33, $f_{bar}=4.60\%$. The Baryon fraction in the Universe is substantially greater than that calculated for each galaxy: $\sim$12\% greater than for MW, $\sim$9\% greater than for M31, and $\sim$10\% greater than for M33. My suspicion for why the universal baryon fraction is larger than that of galaxies lies in the role that dark matter plays in the structure of galaxies versus the structure of the Universe at large. 
+  \newline
+  Galaxies are defined by the presence of dark matter within them (or more aptly, in their halo) that keeps them bound. As evidenced by radial velocity profiles of spiral galaxies, dark matter must be present to explain the plateauing of velocities for matter further from the galactic center. I suspect that, on the scales of the Universe at large (e.g. galaxy clusters and beyond), dark matter plays a still vital, but less pivotal role in keeping baryonic matter bound. There must be an excess of baryonic matter which exists beyond the confines of galaxies and is surrounded by less dark matter.
+\end{enumerate}
+\end{document}
