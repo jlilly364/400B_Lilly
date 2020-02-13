@@ -21,7 +21,7 @@ def ComponentMass(file,partType):
 
     # Store particle masses of given type in an array (units of 10^12 Msun)
     component_mass = data['m'][index]/(10**2)*u.solMass
-    
+    print(component_mass)
     # Calculate (and round) sum of all particle masses of given type
     final_component_mass = np.round(np.sum(component_mass),3)
 
@@ -52,8 +52,10 @@ def ComponentMass(file,partType):
 # masses, and baryon fractions.
 
 # Use ComponentMass to compute the mass of the MW components
-MW_halo_mass = ComponentMass('MW_000.txt',1)
-MW_disk_mass = ComponentMass('MW_000.txt',2)
+#MW_halo_mass = ComponentMass('MW_000.txt',1)
+ComponentMass('MW_000.txt',2)
+"""
+print(MW_disk_mass)
 MW_bulge_mass = ComponentMass('MW_000.txt',3)
 
 # Find MW stellar (bulk+disk) & total (halo+bulk+disk) masses & baryon fraction
@@ -64,6 +66,7 @@ MW_baryon_fraction = np.round(MW_stellar_mass/MW_total_mass,3)*u.solMass
 # Use ComponentMass to compute the mass of the MW components
 M31_halo_mass = ComponentMass('M31_000.txt',1)
 M31_disk_mass = ComponentMass('M31_000.txt',2)
+print(M31_disk_mass)
 M31_bulge_mass = ComponentMass('M31_000.txt',3)
 
 # Find M31 stellar (bulk+disk) & total (halo+bulk+disk) masses & baryon fraction
@@ -74,6 +77,7 @@ M31_baryon_fraction = np.round(M31_stellar_mass/M31_total_mass,3)*u.solMass
 # Use ComponentMass to compute the mass of the MW components
 M33_halo_mass = ComponentMass('M33_000.txt',1)
 M33_disk_mass = ComponentMass('M33_000.txt',2)
+print(M33_disk_mass)
 M33_bulge_mass = ComponentMass('M33_000.txt',3)
 
 # Find M33 stellar (bulk+disk) & total (halo+bulk+disk) masses & baryon fraction
@@ -87,7 +91,7 @@ LocalGroup_disk_mass = np.round(MW_disk_mass + M31_disk_mass + M33_disk_mass,3)
 LocalGroup_bulge_mass = np.round(MW_bulge_mass + M31_bulge_mass + M33_bulge_mass,3)
 LocalGroup_mass = np.round(MW_total_mass+M31_total_mass+M33_total_mass,3)
 LocalGroup_baryon_fraction = np.round((MW_stellar_mass+M31_stellar_mass+M33_stellar_mass)/LocalGroup_mass,3)
-
+"""
 # Print final results (all in units of 10^12 Msun)
 print(r'All results in units of 10^12 solar masses')
 print('Total MW Mass = ' + str(MW_total_mass))
@@ -103,3 +107,5 @@ print('Local Group Baryon Fraction = ' + str(LocalGroup_baryon_fraction))
 print('Local Group Halo Mass = ' + str(LocalGroup_halo_mass))
 print('Local Group Disk Mass = ' + str(LocalGroup_disk_mass))
 print('Local Group Bulge Mass = ' + str(LocalGroup_bulge_mass))
+"""
+"""
