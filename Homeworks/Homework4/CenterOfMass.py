@@ -132,10 +132,11 @@ class CenterOfMass:
             ZCOM = ZCOM2
             RCOM = RCOM2
 
-            # Create a vector to store the COM position                                                                                                                                                       
+            # Create a vector to store the COM position with correct units                                                                                                                                                   
             COMP = [XCOM, YCOM, ZCOM]
             
-        return np.round(COMP,2)
+        return np.round(COMP*u.kpc,2)
+    
     # Function calculate the center of mass velocity
     def COM_V(self, COMX,COMY,COMZ):
         # Input: 
@@ -144,12 +145,12 @@ class CenterOfMass:
         #    3D Vector of COM Velocities
         
         # The max distance from the center that we will use to determine the center of mass velocity                   
-        RVMAX = 15.0
+        RVMAX = 15.0*u.kpc
 
         # Determine the position of all particles relative to the center of mass position
-        xV = self.x - COMX
-        yV = self.y - COMY
-        zV = self.z - COMZ
+        xV = self.x*u.kpc - COMX
+        yV = self.y*u.kpc - COMY
+        zV = self.z*u.kpc - COMZ
         RV = np.sqrt(xV**2+yV**2+zV**2)
         
         # Determine the index for those particles within the max radius
@@ -165,12 +166,10 @@ class CenterOfMass:
         VXCOM, VYCOM, VZCOM = self.COMdefine(vxnew,vynew,vznew,mnew)
 
         # Create a vector to store the COM velocity
-        # Set the correct units using astropy
-        # Round all values
-        COMV = [VXCOM, VYCOM,VZCOM]
+        COMV = [VXCOM, VYCOM, VZCOM]
 
-        # Return the COM vector                                                                                        
-        return np.round(COMV,2)
+        # Return the COM vector with appropriate units                                                                                    
+        return np.round(COMV*u.km/u.s,2)
     
 # ANSWERING QUESTIONS
 #######################
@@ -180,59 +179,64 @@ MWCOM = CenterOfMass("MW_000.txt", 2)
 M31COM = CenterOfMass("M31_000.txt", 2)
 M33COM = CenterOfMass("M33_000.txt", 2)
 
-# MW: store the position and velocity COM 
+# MW: store the COM position and velocity
 MW_COMP = MWCOM.COM_P(0.1)
 MW_COMV = MWCOM.COM_V(MW_COMP[0],MW_COMP[1],MW_COMP[2])
-print("MW COM Position " + str(MW_COMP*u.kpc))
-print("MW COM Velocity " + str(MW_COMV*u.km/u.s))
+print("MW COM Position " + str(MW_COMP))
+print("MW COM Velocity " + str(MW_COMV))
 print('\n')
 
-# M31: store the position and velocity COM
+# M31: store the COM position and velocity
 M31_COMP = M31COM.COM_P(0.1)
 M31_COMV = M31COM.COM_V(M31_COMP[0],M31_COMP[1],M31_COMP[2])
-print("M31 COM Position " + str(M31_COMP*u.kpc))
-print("M31 COM Position " + str(M31_COMV*u.km/u.s))
+print("M31 COM Position " + str(M31_COMP))
+print("M31 COM Position " + str(M31_COMV))
 print('\n')
 
-# M33: store the position and velocity COM
+# M33: store the COM position and velocity
 M33_COMP = M33COM.COM_P(0.1)
 M33_COMV = M33COM.COM_V(M33_COMP[0],M33_COMP[1],M33_COMP[2])
-print("M33 COM Position " + str(M33_COMP*u.kpc))
-print("M33 COM Velocity" + str(M33_COMV*u.km/u.s))
+print("M33 COM Position " + str(M33_COMP))
+print("M33 COM Velocity" + str(M33_COMV))
 print('\n')
 
 # Determine relative separation between MW and M31
-MW_M31_x_diff = (MW_COMP[0]-M31_COMP[0])*u.kpc
-MW_M31_y_diff = (MW_COMP[1]-M31_COMP[1])*u.kpc
-MW_M31_z_diff = (MW_COMP[2]-M31_COMP[2])*u.kpc
+MW_M31_x_diff = MW_COMP[0]-M31_COMP[0]
+MW_M31_y_diff = MW_COMP[1]-M31_COMP[1]
+MW_M31_z_diff = MW_COMP[2]-M31_COMP[2]
 MW_M31_separation = np.round(np.sqrt(MW_M31_x_diff**2+MW_M31_y_diff**2+MW_M31_z_diff**2),2)
 print("Relative separation between MW and M31 = " + str(MW_M31_separation))
 
 # Determine magnitude of relative velocity between MW and M31
-MW_M31_vx_diff = (MW_COMV[0]-M31_COMV[0])*u.km/u.s
-MW_M31_vy_diff = (MW_COMV[1]-M31_COMV[1])*u.km/u.s
-MW_M31_vz_diff = (MW_COMV[2]-M31_COMV[2])*u.km/u.s
+MW_M31_vx_diff = MW_COMV[0]-M31_COMV[0]
+MW_M31_vy_diff = MW_COMV[1]-M31_COMV[1]
+MW_M31_vz_diff = MW_COMV[2]-M31_COMV[2]
 MW_M31_velocity = np.round(np.sqrt(MW_M31_vx_diff**2+MW_M31_vy_diff**2+MW_M31_vz_diff**2),2)
 print("Relative velocity between MW and M31 = " + str(MW_M31_velocity))
 print('\n')
 
 # Determine relative separation between M31 and M33
-M31_M33_x_diff = (M31_COMP[0]-M33_COMP[0])*u.kpc
-M31_M33_y_diff = (M31_COMP[1]-M33_COMP[1])*u.kpc
-M31_M33_z_diff = (M31_COMP[2]-M33_COMP[2])*u.kpc
+M31_M33_x_diff = M31_COMP[0]-M33_COMP[0]
+M31_M33_y_diff = M31_COMP[1]-M33_COMP[1]
+M31_M33_z_diff = M31_COMP[2]-M33_COMP[2]
 M31_M33_separation = np.round(np.sqrt(M31_M33_x_diff**2+M31_M33_y_diff**2+M31_M33_z_diff**2),2)
 print("Relative separation between M31 and M33 = " + str(M31_M33_separation))
 
-# Determine magnitude of relative velocity between MW and M31
-M31_M33_vx_diff = (M31_COMV[0]-M33_COMV[0])*u.km/u.s
-M31_M33_vy_diff = (M31_COMV[1]-M33_COMV[1])*u.km/u.s
-M31_M33_vz_diff = (M31_COMV[2]-M33_COMV[2])*u.km/u.s
+# Determine magnitude of relative velocity between M31 and M33
+M31_M33_vx_diff = M31_COMV[0]-M33_COMV[0]
+M31_M33_vy_diff = M31_COMV[1]-M33_COMV[1]
+M31_M33_vz_diff = M31_COMV[2]-M33_COMV[2]
 M31_M33_velocity = np.round(np.sqrt(M31_M33_vx_diff**2+M31_M33_vy_diff**2+M31_M33_vz_diff**2),2)
 print("Relative velocity between M31 and M33 = " + str(M31_M33_velocity))
+
 """
 # Question 4
- Q: Given that M31 and the MW are about to merge, why is the iteratitive process to determine the COM important?
- A: The iterative process is important because, as the galaxies continue to get closer, the dynamics of their
-    merger will be determined by the common center of mass between the galaxies, rather than their individual 
-    centers of mass which we have defined thus far in this program.
+#######################
+ Q: Given that M31 and the MW are about to merge, why is the iterative process 
+    to determine the COM important?
+ A: The iterative process is important because, as the galaxies continue to get 
+    closer, the dynamics of their merger will be determined by the common center 
+    of mass between the galaxies rather than their individual centers of mass 
+    which we have defined thus far in this program.
+#######################
 """
