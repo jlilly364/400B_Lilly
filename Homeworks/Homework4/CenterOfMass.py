@@ -121,9 +121,9 @@ class CenterOfMass:
 
             # Change the frame of reference to the newly computed COM.                                                 
             # subtract the new COM
-            xNew = x2 - XCOM2
-            yNew = y2 - YCOM2
-            zNew = z2 - ZCOM2
+            xNew = self.x - XCOM2
+            yNew = self.y - YCOM2
+            zNew = self.z - ZCOM2
             RNEW = np.sqrt(xNew**2+yNew**2+zNew**2)
 
             # Set the center of mass positions to the refined values                                                   
@@ -154,7 +154,7 @@ class CenterOfMass:
         RV = np.sqrt(xV**2+yV**2+zV**2)
         
         # Determine the index for those particles within the max radius
-        indexV = np.where(RV <= RVMAX)
+        indexV = np.where(RV < RVMAX)
 
         # Determine the velocity and mass of those particles within the mass radius
         vxnew = self.vx[indexV]
