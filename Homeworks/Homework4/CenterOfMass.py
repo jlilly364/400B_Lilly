@@ -130,7 +130,7 @@ class CenterOfMass:
             XCOM = XCOM2
             YCOM = YCOM2
             ZCOM = ZCOM2
-            RCOM = RCOM2
+            RCOM = RCOM2 
 
             # Create a vector to store the COM position with correct units                                                                                                                                                   
             COMP = [XCOM, YCOM, ZCOM]
@@ -175,9 +175,9 @@ class CenterOfMass:
 #######################
 
 # Create a center of mass object for the MW, M31 and M33
-MWCOM = CenterOfMass("MW_000.txt", 2)
-M31COM = CenterOfMass("M31_000.txt", 2)
-M33COM = CenterOfMass("M33_000.txt", 2)
+MWCOM = CenterOfMass('C:/Users/Jimmy/400B_Lilly/MW_000.txt', 2)
+M31COM = CenterOfMass('C:/Users/Jimmy/400B_Lilly/M31_000.txt', 2)
+M33COM = CenterOfMass('C:/Users/Jimmy/400B_Lilly/M33_000.txt', 2)
 
 # MW: store the COM position and velocity
 MW_COMP = MWCOM.COM_P(0.1)
