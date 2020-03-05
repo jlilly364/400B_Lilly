@@ -67,7 +67,7 @@ class MassProfile:
         M_Enc = []
         
         # Determine COM position of galaxy
-        COM = CenterOfMass(self.filename,ptype)
+        COM = CenterOfMass(self.filename,2)
         COM_P = COM.COM_P(0.1)
         
         # Define components of COM
