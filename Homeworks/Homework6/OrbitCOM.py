@@ -212,7 +212,7 @@ Answers to questions:
     3. Q: When do M31 and the MW merge? What happen's to M33's orbit as they
           merge?
        A: M31 and the MW seem to merge in 6.64 billion years. When they merge, 
-          M33 orbits the remnant galaxy with a regular period an average 
+          M33 orbits the remnant galaxy with a regular period and average 
           relative velocity of 250 km/s. Over the next ~6 billion years,
           M33 falls into (gets closer to) the remnant galaxy.
 """
