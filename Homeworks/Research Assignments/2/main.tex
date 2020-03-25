@@ -1,0 +1,97 @@
+
+%% Beginning of file 'sample63.tex'
+%%
+%% Modified 2019 June
+%%
+%% This is a sample manuscript marked up using the
+%% AASTeX v6.3 LaTeX 2e macros.
+%%
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% (Copyright 2000-2015).  See the classfile for details.
+
+%% AASTeX requires revtex4-1.cls (http://publish.aps.org/revtex4/) and
+
+%% using aastex version 6.3
+\documentclass{aastex63}
+\usepackage{subfig}
+
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+%% Reintroduced the \received and \accepted commands from AASTeX v5.2
+%\received{June 1, 2019}
+%\revised{January 10, 2019}
+%\accepted{\today}
+%% Command to document which AAS Journal the manuscript was submitted to.
+%% Adds "Submitted to " the argument.
+%\submitjournal{AJ}
+
+\graphicspath{{./}{figures/}}
+
+\begin{document}
+
+\title{A New Perspective on the Local Group Merger}
+
+\author{Jimmy Lilly}
+\email{jwlilly@email.arizona.edu}
+\affiliation{Steward Observatory, University of Arizona \\
+933 N Cherry Ave \\
+Tucson, AZ 85719, USA}
+
+%% We recommend that authors also use the natbib \citep
+%% and \citet commands to identify citations.  The citations are
+%% tied to the reference list via symbolic KEYs. The KEY corresponds
+%% to the KEY in the \bibitem in the reference list below. 
+
+\section{Introduction} \label{sec:intro}
+The goal of this project is to visualize the fate of stars at the Sun's location, but in the disks of M31 and M33 rather than the Milky Way (MW). The primary galaxies within the Local Group (MW, M31, and M33) are on a collision course with the first pass-by between the MW and M31 set to occur in about 4 Gyr (\cite{2012ApJ...753....9V}). Now with precise constraints on the full three-dimensional vector of each galaxy (\cite{2012ApJ...753....8V}), this data provides a unique opportunity to probe the effects of galaxy mergers and make accurate predictions about the remnant system.
+
+The utility of visualizing this merger is two-fold. Firstly, for scientific purposes, seeing the evolution of the constituent galaxies and their remnant provides a valuable check on the underlying physics used to generate the simulation. Researchers can use this as both a visual aid to confirm (or deny) the anticipated results of their simulation and for comparisons with observations of distant galaxy mergers (e.g. Figure \ref{fig:sunlocation}). These comparisons to real mergers provide yet another assessment of the accuracy of the parameters informing the simulation and stand to further refine these parameters for even higher accuracy simulations and visualizations in the future. Secondly, visualizing this merger is useful for engaging the public in cutting edge astrophysical research. The public at large does not have access to, or perhaps also the expertise to fully understand, the literature published for science on the dynamical future of Local Group. This amplifies the need for public press releases that summarize the key components of these findings. Visualizations of this merger can effectively convey the most important contents of high-level journal publications while also serving as an engaging visual stimulus.
+
+As outlined in \cite{2012ApJ...753....9V}, it is not currently possible to accurately simulate how the location of the Sun will change due to the evolution of the MW itself, so approaches to predicting its fate have tracked the positions of sets of "candidate Suns" as their simulations evolve. van der Marel+ find that after 10 Gyr there is an 85.4\% chance that the Sun will be displaced to a radius beyond its current distance of $\sim$8.29 kpc from the center of the MW. In this simulation, the Sun was also not found to ever become unbound from the MW-M31 remnant. This collaboration found a 20.1\% chance that the Sun moved through M33 at some point in the next 10 Gyr, but none of the candidates became bound to it. Another study \citep{2008MNRAS.386..461C}, which did not yet have access to the now well-constrained transverse velocity for M31, used a similar "candidate Sun" method in their simulation of the merger. This group also found a high probability, $\sim$54\%, for the Sun to be further than 30 kpc from the center of the merger remnant ($\sim$10 Gyr from now). This result is taken from a single snapshot so it is not certain whether the Sun will remain in this position for an extended period of time.
+
+An important aspect of the Local Group merger that has yet to be studied in great detail is the fate of a Sun-like star within M31 or M33. This fate has yet to be visualized so the emphasis of this project will be to accomplish a first-look at how Sun-like stars in M31 and M33 will fare from the merger. As previously mentioned, the exact fate of the Sun throughout the evolution of the MW and the Local Group merger is unknown so this remains an open question as well. Current studies like that conducted by \cite{2019ApJ...872...24V} are also including new observations of the Local Group with GAIA data to further constrain the motions of M31 and M33. Although these measurements are not as precise as that presented within \citep{2012ApJ...753....9V}, they lie within the uncertainties presented in that work and further validate the predictions about the dynamics of the Local Group Merger. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{SunLocation.PNG}
+    \caption{Top panel - Visualization of the MW as it looks: today (left), in 1.8 Gyr after the first pass-by between the MW and M31 (middle), and 0.4 Gyr after the first pass-by (right).\\ Bottom panel - Histograms of distance of Sun-like stars from the center of the MW: today (left), just before the first M31 pass-by (middle), and just after this pass-by (right). (\cite{2008MNRAS.386..461C})}
+    \label{fig:sunlocation}
+\end{figure}
+
+\section{Proposal} \label{sec:proposal}
+\subsection{What specific questions will you be addressing?}
+This project will investigate methods to choose Sun-like stars in M31 and M33 as previous studies have done for the MW (\cite{2012ApJ...753....9V} and \cite{2008MNRAS.386..461C}). In these works, an annulus of stars that lie near the Sun's current position in the MW (8.29 kpc from galactic center) and that have similar circular velocities (239 km/s \cite{2012ApJ...753....8V}) was chosen to encapsulate a group of candidate Suns that were tracked throughout the simulation (see Figure \ref{fig:sunlocation}). Initially, it would be computationally easiest to view this merger from the perspective of an outside observer so the event could be viewed in its spatial entirety. If time and computational power allows, it would also be exceptional to project this merger on a view of the nightsky from the MW, M31, or M33.
+
+In terms of measuring kinematic properties of these stars, it would be useful to measure their velocities as the simulation evolve to understand how it changes relative to the initial conditions. Ideally, the simulation could be presented as a movie that runs concurrently with plots of the radial and velocity distributions of the candidates.
+
+\subsection{How will you approach the problem using the simulation data?}
+Upon choosing an annulus within M31 or M33 to select candidate Suns, these stars can be color-coded to stand out from the rest of their galaxy. A histogram, projected onto a 2D space, of the disk particles for each galaxy can then be plotted for each snapshot of the simulation, with the candidates easily distinguishable from other disk particles. Once all of these histograms have been generated, they can be combined to form a movie: a more effective visualization of the merger and its effects on the position of the "Sun". If computationally feasible, this visualization could be extended to 3 dimensions.
+
+In addition to plotting the merger itself, kinematic properties of the candidate stars can be plotted as well. Histograms of their velocities could be plotted concurrently as they should be simple to track as a function of time. Histograms of radial distance from their host galaxy should be feasible as well for at least the first half of the simulation (see Figure \ref{fig:sunlocation}). The issue here lies in the ambiguity of what is meant by the "center" of the host galaxy as the merger transpires. Each galaxy will cease to have a well-defined center of mass once the MW and M31 go through several pass-bys. Perhaps this distribution could be tracked throughout the duration of the simulation and drastic changes in the latter half could indicate this ambiguity.
+
+I am familiar with the matplotlib library in python which I plan to use for the bulk of this study so I am quite comfortable with that already. I have no experience with combining many images into a movie so I will have to learn a way to combine these and display a progress bar of the time for each snapshot. I do not anticipate learning this to be too much of a burden. I am also not familiar with displaying many plots concurrently in a movie so I will have to figure that out as well.
+\subsection{Figure illustrating methodology}
+See Figure \ref{fig:Figure 2} on page 3. \\
+\subsection{Hypothesis \& Motivating Science}
+The data used for this project is sourced from the simulation presented in \cite{2012ApJ...753....9V}. With this in mind, this group assumed that the mass of the MW and M31 are approximately the same with each 10 times greater than M33. A Sun-like star in M31 is thus likely to end up further away from the galactic center of M31 after the merger is complete. Likewise, it is unlikely for such a star in M31 to become unbound from the merger remnant and be bound by M33. A Sun-like star in M33 would have a more interesting fate because it is less bound to its less massive host galaxy than a counterpart in the MW or M31. Such a star is likely to become unbound from M33 because it is encountering the combined gravitational force of the MW and M31 upon its pass-by. It is reasonable to expect that this star would then become bound to the MW and M31 remnant, likely with a very high probability of being displaced far from its original distance from M33's galactic center and with a higher velocity.
+
+%% For this sample we use BibTeX plus aasjournals.bst to generate the
+%% the bibliography. The sample63.bib file was populated from ADS. To
+%% get the citations to show in the compiled file do the following:
+%%
+%% pdflatex sample63.tex
+%% bibtext references
+%% pdflatex sample63.tex
+%% pdflatex sample63.tex
+\begin{figure}
+    \plottwo{LocalGroup.png}{LocalGroup3D.png}
+    \caption{(a) Histogram of disk particles for the MW, M31, and M33 projected onto the x-y plane.\\ (b) 3D Histogram of disk particles for the MW, M31, and M33. These figures made use of the \textit{matplotlib} python plotting package \citep{Hunter:2007}}
+    \label{fig:Figure 2}
+\end{figure}
+
+\bibliography{references}{}
+\bibliographystyle{aasjournal}
+
+\end{document}
