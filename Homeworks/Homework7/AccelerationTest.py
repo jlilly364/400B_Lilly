@@ -2,7 +2,7 @@
 Creation date: Thu Apr  2 19:20:33 2020
 Author: Jimmy Lilly (www.github.com/jlilly364)
 
-Program Objective: 
+Program Objective: Check acceleration functions from M33AnalyticalOrbit
 """
 import astropy.units as u
 import astropy.constants as const
