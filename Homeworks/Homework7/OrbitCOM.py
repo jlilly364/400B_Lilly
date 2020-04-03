@@ -167,7 +167,7 @@ def OrbitPlot(time1,position1,time2,position2):
     legend = ax.legend(fontsize='x-large')
     
     # Save plot
-    sep_file = 'C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/Separation.png'
+    sep_file = 'C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/RelativeSeparation.png'
     
     # Uncomment below to save file
     plt.savefig(sep_file)
@@ -191,9 +191,10 @@ def VelocityPlot(time1,velocity1,time2,velocity2):
     legend = ax.legend(fontsize='x-large')
     
     # Save plot
-    #vel_file = 'C:/Users/Jimmy/400B_Lilly/Homeworks/Homework6/LG_velocity.png'
+    vel_file = 'C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/RelativeVelocity.png'
+    
     # Uncomment below to save file
-    #plt.savefig(vel_file)
+    plt.savefig(vel_file)
 
 """
 Answers to questions:
