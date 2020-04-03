@@ -2,6 +2,9 @@
 # Analytical Orbit of M33
 # Jimmy Lilly (4/3/20)
 
+# Collaborated with Sean Cunningham, Mackenzie James, Madison Walder,
+# and Ryan Webster
+
 # Import modules
 import numpy as np
 import astropy.units as u
@@ -9,6 +12,7 @@ from ReadFile import Read
 import astropy.constants as const
 from CenterOfMass2 import CenterOfMass
 from GalaxyMass import ComponentMass
+from OrbitCOM import VectorDiff, OrbitPlot, VelocityPlot
 
 # Class to determine the acceleration M33 feels from M31 and integrate its 
 # current position and velocity forwards in time
@@ -138,7 +142,7 @@ class M33AnalyticalOrbit:
         # Compute the position at the next timestep
         rnew = rhalf + vnew*dt*.5
         
-        # Return the new position and velcoity vectors
+        # Return the new position and velocity vectors
         return rnew, vnew
     
     # Function to loop over LeapFrog to solve the EoM and compute
@@ -206,4 +210,30 @@ file = 'C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/OrbitIntegration.txt'
 Orbit = M33AnalyticalOrbit(file)
 
 # Call OrbitIntegration function
-Orbit.OrbitIntegration(0.0,.5,10.0)
+Orbit.OrbitIntegration(0.0,.1,10.0)
+
+###
+# Extract relative pos. and vel. of M31-M33 from simulation
+M31_sim_file = "C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/Orbit_M31.txt"
+data_sim_M31 = np.genfromtxt(M31_sim_file,dtype=None,names=True)
+
+M33_sim_file = "C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/Orbit_M33.txt"
+data_sim_M33 = np.genfromtxt(M33_sim_file,dtype=None,names=True)
+
+M31_M33_sim_time, M31_M33_sim_diffP, M31_M33_sim_diffV = VectorDiff(data_sim_M31,data_sim_M33)
+###
+
+###
+# Extract relative velocity of M31-M33 from analytical integration
+M33_ana_file = "C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/OrbitIntegration.txt"
+data_ana_M33 = np.genfromtxt(M33_ana_file,dtype=None,names=True)
+
+M31_M33_ana_time = data_ana_M33['t']
+M31_M33_ana_diffP = np.sqrt(data_ana_M33['x']**2+data_ana_M33['y']**2+data_ana_M33['z']**2)
+M31_M33_ana_diffV = np.sqrt(data_ana_M33['vx']**2+data_ana_M33['vy']**2+data_ana_M33['vz']**2)
+###
+
+# Plot relative separation and velocity of M31-M33 for both sim. and integr.
+OrbitPlot(M31_M33_sim_time,M31_M33_sim_diffP,M31_M33_ana_time,M31_M33_ana_diffP)
+VelocityPlot(M31_M33_sim_time,M31_M33_sim_diffV,M31_M33_ana_time,M31_M33_ana_diffV)
+
