@@ -41,7 +41,7 @@ def OrbitCOM(galaxy,start,end,n):
         VolDec = 4
     else:
         delta = 0.1
-        VolDec= 5
+        VolDec = 5
     
     # generate the snapshot id sequence 
     # it is always a good idea to also check if the input is eligible (not required)
