@@ -60,10 +60,12 @@ class M33AnalyticalOrbit:
         rmag = np.sqrt(r[0]**2+r[1]**2+r[2]**2)
         
         # Prefactor 
-        prefactor = -self.G*M/rmag*((r_a+rmag)**2)
+        A = -self.G*M
+        B = rmag*((r_a+rmag)**2)
+        prefactor = A/B
         
         # Calculate acceleration of component
-        a = prefactor*self.r0
+        a = [x*prefactor for x in r]
         
         # Return acceleration vector of bulge or halo
         return a
@@ -104,9 +106,9 @@ class M33AnalyticalOrbit:
         
         # Calculate acceleration vector of each component
         # Use functions defined above
-        a_halo = self.HernquistAccel(self.Mhalo,self.rhalo,self.r0)
-        a_bulge = self.HernquistAccel(self.Mbulge,self.rbulge,self.r0)
-        a_disk = self.MiyamotoNagaiAccel(self.Mdisk,self.rdisk,self.r0)
+        a_halo = self.HernquistAccel(self.Mhalo,self.rhalo,r)
+        a_bulge = self.HernquistAccel(self.Mbulge,self.rbulge,r)
+        a_disk = self.MiyamotoNagaiAccel(self.Mdisk,self.rdisk,r)
         
         # Add halo and bulge accelerations (np.add can only add 2 lists)
         sum1 = np.add(a_halo,a_bulge)
@@ -197,7 +199,6 @@ class M33AnalyticalOrbit:
                    header="{:>10s}{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}{:>11s}"\
                    .format('t', 'x', 'y', 'z', 'vx', 'vy', 'vz'))
 
-"""
 # Define name/destination of text file
 file = 'C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/OrbitIntegration.txt'
 
@@ -205,5 +206,4 @@ file = 'C:/Users/Jimmy/400B_Lilly/Homeworks/Homework7/OrbitIntegration.txt'
 Orbit = M33AnalyticalOrbit(file)
 
 # Call OrbitIntegration function
-Orbit.OrbitIntegration(0.0,.01,10.0)
-"""
+Orbit.OrbitIntegration(0.0,.5,10.0)
