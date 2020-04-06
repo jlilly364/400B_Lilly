@@ -14,10 +14,10 @@ G = const.G.to(u.kpc**3/u.Msun/u.Gyr**2).value
 r = [1,2,3]
 rhalo = 61.5 # in kpc
 Mhalo = 1e12*ComponentMass('C:/Users/Jimmy/400B_Lilly/M31_000.txt',1).value # in Msun
-
+print("Mhalo = "+str(Mhalo))
 rdisk = 5.0
 Mdisk = 1e12*ComponentMass('C:/Users/Jimmy/400B_Lilly/M31_000.txt',2).value # in Msun
-print("Mdisk = "+str(Mdisk))
+#print("Mdisk = "+str(Mdisk))
 zd = rdisk/5.0
 
 # Function to calculate accel. of halo and bulge using Hernquist profile
@@ -80,5 +80,5 @@ def MiyamotoNagaiAccel(M, rd, r):
     # Return acceleration vector of disk
     return a
 
-#HernquistAccel(Mhalo,rhalo,r)
-MiyamotoNagaiAccel(Mdisk,rdisk,r)
+HernquistAccel(Mhalo,rhalo,r)
+#MiyamotoNagaiAccel(Mdisk,rdisk,r)

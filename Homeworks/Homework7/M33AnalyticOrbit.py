@@ -236,4 +236,3 @@ M31_M33_ana_diffV = np.sqrt(data_ana_M33['vx']**2+data_ana_M33['vy']**2+data_ana
 # Plot relative separation and velocity of M31-M33 for both sim. and integr.
 OrbitPlot(M31_M33_sim_time,M31_M33_sim_diffP,M31_M33_ana_time,M31_M33_ana_diffP)
 VelocityPlot(M31_M33_sim_time,M31_M33_sim_diffV,M31_M33_ana_time,M31_M33_ana_diffV)
-

@@ -49,8 +49,6 @@ class MassProfile:
         # store galaxy name
         self.gname = galaxy
     
-    
-    
     def MassEnclosed(self, ptype, R):
     # Function that determines the MassEnclosed of particles of a given type
     # input: ptype  Particle type,  1=Halo, 2=Disk, 3=Bulge
@@ -63,7 +61,7 @@ class MassProfile:
         COM = CenterOfMass(self.filename,2)
         # Store the COM position of the galaxy
         # Set Delta = whatever you determined to be a good value in Homework 4.
-        GalCOMP = COM.COM_P(0.1)
+        GalCOMP = COM.COM_P(0.1,2)
             
         # create an array to store indexes of particles of desired Ptype                                                
         index = np.where(self.data['type'] == ptype)
