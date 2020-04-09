@@ -1,10 +1,6 @@
-
-
 # Homework 5 Solutions
 # Mass Profiles
 # G. Besla 
-
-
 
 # import modules
 import numpy as np
@@ -17,13 +13,11 @@ import matplotlib
 
 # my modules
 from ReadFile import Read
-from CenterOfMass import CenterOfMass
-
+from CenterOfMass2 import CenterOfMass
 
 # Gravitational Constant
 # converting G to units of kpc*km^2/s^2/Msun
 G = G.to(u.kpc*u.km**2/u.s**2/u.Msun) # 4.498768e-6*u.kpc**3/u.Gyr**2/u.Msun
-
 
 class MassProfile:
     # Class to define the Mass and Rotation Curve of a Galaxy
@@ -52,8 +46,6 @@ class MassProfile:
     
         # store galaxy name
         self.gname = galaxy
-    
-    
     
     def MassEnclosed(self, ptype, R):
     # Function that determines the MassEnclosed of particles of a given type
