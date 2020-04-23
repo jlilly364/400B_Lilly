@@ -59,7 +59,7 @@ class MassProfile:
         COM = CenterOfMass(self.filename,2)
         # Store the COM position of the galaxy
         # Set Delta = whatever you determined to be a good value in Homework 4.
-        GalCOMP = COM.COM_P(0.1)
+        GalCOMP = COM.COM_P(0.1,2)
             
         # create an array to store indexes of particles of desired Ptype                                                
         index = np.where(self.data['type'] == ptype)
@@ -101,8 +101,6 @@ class MassProfile:
             Menc = self.MassEnclosed(1,R) + self.MassEnclosed(2,R)  
           
         return Menc
-    
-        
         
     def HernquistMass(self, R, scale, Mhalo):
     # Determine the mass enclosed using Hernquist 1990 Mass profile 
@@ -113,9 +111,6 @@ class MassProfile:
     
         # Hernquist 1990 Mass profile
         return Mhalo*R**2/(R+scale)**2*u.Msun
-       
-        
-        
         
     def CircularVelocity(self, ptype, R):
     # Function that determines the circular speed at a given radius using the mass enclosed
