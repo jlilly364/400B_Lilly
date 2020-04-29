@@ -77,7 +77,7 @@ class MassProfile:
             
         # Array to store enclosed mass as a function of the input radius array
         Menc = np.zeros(np.size(R))
-    
+        
         # set up a while loop that continues until the end of the input radius array
         for i in range(np.size(R)):
             # Only want particles within the given radius
