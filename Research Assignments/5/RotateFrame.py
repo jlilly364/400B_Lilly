@@ -1,6 +1,8 @@
 # a function that will rotate the position and velocity vectors
 # so that the disk angular momentum is aligned with z axis. 
 
+import numpy as np
+
 def RotateFrame(posI,velI):
     # input:  3D array of positions and velocities
     # returns: 3D array of rotated positions and velocities such that j is in z direction
